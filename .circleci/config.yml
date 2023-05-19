@@ -61,7 +61,7 @@ jobs:
             # List docker images
             docker images ls
             # Login to docker hub
-            docker login -u haitv97 --password 01H@i28121997
+            docker login -u haitv97 --password 01H@!28121997
             # Pusing docker images to git hub
             docker push haitv97/devops-project05-app:latest
 
