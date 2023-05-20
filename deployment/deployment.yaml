@@ -1,23 +1,21 @@
 kind: Deployment
-apiVersion: apps/v1
+apiVersion: apps/v1beta2
 metadata:
   name: deployment
 spec:
-  replicas: $REPLICAS
+  replicas: 3
   #number of replicas generated
   selector:
     #assigns labels to the pods for future selection
     matchLabels:
       app: nginx
-      version: v01
   template:
     metadata:
       labels:
-        app: ${APP}
-        version: v01
+        app: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx:1.7.9
+        image: nginx
         ports:
         - containerPort: 80
