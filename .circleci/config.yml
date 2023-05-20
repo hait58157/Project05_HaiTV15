@@ -118,8 +118,8 @@ jobs:
                 ls
       - kubernetes/create-or-update-resource:
           get-rollout-status: false
-          resource-file-path: nginx-deployment/deployment.yaml
-          resource-name: nginxdeployment/project05-devpos-cluster
+          resource-file-path: ./deployment.yaml
+          resource-name: ./project05-devpos-cluster
 
   # Test the Cluster
   test-cluster:
