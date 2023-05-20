@@ -116,6 +116,12 @@ jobs:
             command: |
                 pwd
                 ls
+                kubectl get services
+                kubectl get pods
+                kubectl describe pods
+                kubectl get nodes
+                kubectl get deployment
+                kubectl get services -o wide
       - kubernetes/create-or-update-resource:
           get-rollout-status: false
           resource-file-path: "deployment/deployment.yaml"
