@@ -71,9 +71,9 @@ jobs:
           name: Upload Docker image to Dockerhub
           command: |
             echo "Docker ID and Image: $IMAGE_NAME"
-            sudo docker login -u="$DOCKERHUB_USERNAME" -p="$DOCKERHUB_PASS"
-            sudo docker tag $IMAGE_NAME $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
-            sudo docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+            sudo docker login -u="haitv97" -p="01H@!28121997"
+            sudo docker tag $IMAGE_NAME haitv97/$IMAGE_NAME:latest
+            sudo docker push haitv97/$IMAGE_NAME:latest
 
   deploy-infrastructure:
     docker:
