@@ -88,10 +88,9 @@ jobs:
           command: |
             pwd
             cd .circleci
-            aws cloudformation deploy \
+            aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/network.yml \
               --stack-name "${ENVIRONMENT_NAME}-eks-network" \
-              --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides file://cloudformation/network-parameters.json
       - run:
           name: Deloy EKS Cluster
