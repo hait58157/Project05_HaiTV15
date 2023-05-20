@@ -1,0 +1,5 @@
+[
+    "EnvironmentName=backend",
+    "SSHKeyName=haitv97",
+    "amiImageId=ami-068663a3c619dd892"
+  ]

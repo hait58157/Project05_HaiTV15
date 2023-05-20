@@ -1,0 +1,34 @@
+Test deloy network cloudformation
+aws cloudformation deploy \
+--template-file cloudformation/network.yml \
+--stack-name "backend-eks-network" \
+--region us-east-1 \
+--parameter-overrides file://cloudformation/network-parameters.json
+
+Test deploy cluster cloudformation
+aws cloudformation deploy \
+--template-file cloudformation/cluster.yml \
+--tags project=backend-project \
+--stack-name "backend-eks-cluster" \
+--region us-east-1 \
+--parameter-overrides file://cloudformation/cluster-parameters.json \
+--capabilities CAPABILITY_NAMED_IAM
+
+Test deploy nodegroup
+aws cloudformation deploy \
+--template-file cloudformation/nodegroup.yml \
+--tags project=backend-project \
+--stack-name "backend-eks-nodegroup" \
+--region us-east-1 \
+--parameter-overrides file://cloudformation/nodegroup-parameters.json \
+--capabilities CAPABILITY_NAMED_IAM
+
+
+SSH to management
+ssh -i haitv97.pem ubuntu@ec2-34-226-249-137.compute-1.amazonaws.com
+
+aws eks update-kubeconfig --region us-east-1 --name backend-cluster
+
+aws eks --region us-east-1 update-kubeconfig --name backend-cluster
+
+aws eks describe-cluster --name cluster_name --region example_region --query cluster.resourcesVpcConfig
