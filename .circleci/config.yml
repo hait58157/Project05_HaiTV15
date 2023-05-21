@@ -107,6 +107,9 @@ jobs:
       - run:
           name: Deploy Nodegroup
           command: |
+            pwd
+            cd .circleci
+            ls
             aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/nodegroup.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
