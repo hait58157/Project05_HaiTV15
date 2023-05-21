@@ -32,6 +32,10 @@ Resources:
         - Ref: InstanceSecurityGroup
       KeyName: !Ref SSHKeyName
       ImageId: !Ref amiImageId
+      SubnetId:
+        Fn::GetAtt:
+          - VPCStack
+          - Outputs.PublicSubnet1
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName}-management1
@@ -46,6 +50,10 @@ Resources:
         - Ref: InstanceSecurityGroup
       KeyName: !Ref SSHKeyName
       ImageId: !Ref amiImageId
+      SubnetId:
+        Fn::GetAtt:
+          - VPCStack
+          - Outputs.PublicSubnet2
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName}-management2
