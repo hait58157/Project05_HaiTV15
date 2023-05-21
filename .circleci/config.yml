@@ -197,6 +197,7 @@ jobs:
               else
                 cat ~/inventory.txt
                 cd .circleci/ansible
+                ls
                 ansible-playbook -i ~/inventory.txt configure-cluster.yml
               fi
       - run:
