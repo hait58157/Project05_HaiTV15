@@ -88,7 +88,6 @@ jobs:
           command: |
             pwd
             cd .circleci
-            aws ec2 create-default-vpc
             aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/network.yml \
               --stack-name "${ENVIRONMENT_NAME}-eks-network" \
