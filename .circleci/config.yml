@@ -97,24 +97,20 @@ jobs:
           command: |
             pwd
             cd .circleci
-            aws cloudformation deploy \
+            aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/cluster.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
               --stack-name "${ENVIRONMENT_NAME}-eks-cluster" \
-              --region us-east-1 \
               --parameter-overrides file://cloudformation/cluster-parameters.json \
               --capabilities CAPABILITY_NAMED_IAM
           no_output_timeout: 15m
       - run:
           name: Deploy Nodegroup
           command: |
-            pwd
-            cd .circleci
-            aws cloudformation deploy \
+            aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/nodegroup.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
               --stack-name "${ENVIRONMENT_NAME}-eks-nodegroup" \
-              --region us-east-1 \
               --parameter-overrides file://cloudformation/nodegroup-parameters.json \
               --capabilities CAPABILITY_NAMED_IAM
       - run:
@@ -122,11 +118,10 @@ jobs:
           command: |
             pwd
             cd .circleci
-            aws cloudformation deploy \
+            aws --region us-east-1 cloudformation deploy \
               --template-file cloudformation/management.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
               --stack-name "${ENVIRONMENT_NAME}-eks-management" \
-              --region us-east-1 \
               --parameter-overrides file://cloudformation/management-parameters.json \
               --output text >> ~/deployLog.txt
             cat ~/deployLog.txt
